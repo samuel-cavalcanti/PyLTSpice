@@ -40,18 +40,6 @@ LTspice_arg = {'netlist': ['-netlist'], 'run': ['-b', '-Run']}
 
 cmdline_switches = []
 
-# # Sel existing LTC Kernel
-# if os.path.isfile(LTspiceXVII_exe[0]):
-#     LTspice_exe = LTspiceXVII_exe
-#     logging.info("Found LTSpice XVII. Will use this engine.")
-# elif os.path.isfile(LTspiceIV_exe[0]):
-#     LTspice_exe = LTspiceIV_exe
-#     logging.info("Found LTSpice IV. Will use this engine.")
-# else:
-#     error_message = "Error: No LTSpice installation found"
-#     logging.error(error_message)
-#     raise FileNotFoundError(error_message)
-
 executable_path = LTSpiceExecutablePath()
 LTspice_exe = executable_path.get()
 

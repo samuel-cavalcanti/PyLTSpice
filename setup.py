@@ -1,12 +1,19 @@
+import sys
+
 import setuptools
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
+if 'linux' in sys.platform:
+    init_script = 'PyLTSpice/__init__.py'
+else:
+    init_script = 'PyLTSpice\\__init__.py'
+
 setuptools.setup(
     name='PyLTSpice',
     version='1.1',
-    scripts=['PyLTSpice\\__init__.py'
+    scripts=[init_script
              # 'PyLTSpice\\Histogram.py',
              # 'PyLTSpice\\LTSpice_RawRead.py',
              # 'PyLTSpice\\LTSpiceBatch.py',

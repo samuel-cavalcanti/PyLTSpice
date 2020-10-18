@@ -1,2 +1,5 @@
 .vscode/
 __pycache__/
+PyLTSpice.egg-info/
+build/
+dist/
