@@ -26,7 +26,7 @@ import re
 import traceback
 from typing import Optional, Callable, Union, Any
 from PyLTSpice.SpiceEditor import SpiceEditor
-
+from PyLTSpice.LTSpice_executable_path import LTSpiceExecutablePath
 __all__ = ('LTCommander', 'SimCommander', 'cmdline_switches')
 
 END_LINE_TERM = '\n'
@@ -40,18 +40,20 @@ LTspice_arg = {'netlist': ['-netlist'], 'run': ['-b', '-Run']}
 
 cmdline_switches = []
 
-# Sel existing LTC Kernel
-if os.path.isfile(LTspiceXVII_exe[0]):
-    LTspice_exe = LTspiceXVII_exe
-    logging.info("Found LTSpice XVII. Will use this engine.")
-elif os.path.isfile(LTspiceIV_exe[0]):
-    LTspice_exe = LTspiceIV_exe
-    logging.info("Found LTSpice IV. Will use this engine.")
-else:
-    error_message = "Error: No LTSpice installation found"
-    logging.error(error_message)
-    raise FileNotFoundError(error_message)
+# # Sel existing LTC Kernel
+# if os.path.isfile(LTspiceXVII_exe[0]):
+#     LTspice_exe = LTspiceXVII_exe
+#     logging.info("Found LTSpice XVII. Will use this engine.")
+# elif os.path.isfile(LTspiceIV_exe[0]):
+#     LTspice_exe = LTspiceIV_exe
+#     logging.info("Found LTSpice IV. Will use this engine.")
+# else:
+#     error_message = "Error: No LTSpice installation found"
+#     logging.error(error_message)
+#     raise FileNotFoundError(error_message)
 
+executable_path = LTSpiceExecutablePath()
+LTspice_exe = executable_path.get()
 
 if sys.version_info.major >= 3 and sys.version_info.minor >= 6:
     clock_function = time.process_time
